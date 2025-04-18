@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 const URL = "https://api.spoonacular.com/recipes/complexSearch";
 const API_KEY = "cf1a95fb73de4c1db8bc69826c4c8735";
 
-export default function Search({ setFoodData }) {
+export default function Search({ foodData, setFoodData }) {
   const [query, setQuery] = useState("pizza");
 
   useEffect(() => {
