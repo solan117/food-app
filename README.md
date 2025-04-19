@@ -1,12 +1,35 @@
-# React + Vite
+# 🍽️ Food Recipe App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A sleek and modern web app to explore delicious recipes with beautiful images, ingredient details, and cooking instructions. Built using **React**, styled with **CSS Modules**, and powered by the **Spoonacular API** and a **custom recipe dataset**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- 🧠 Search and display food recipes
+- 📷 High-quality food images
+- 🍳 View ingredients and cooking instructions
+- 🔁 Flip card animation to toggle recipe view
+- 🧰 Uses Spoonacular API and custom dataset for enhanced flexibility
+- 📱 Responsive design
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend**: React, JavaScript, CSS Modules
+- **Animation**: CSS3 transforms
+- **Data**:
+    - [Spoonacular API](https://spoonacular.com/food-api)
+    - Custom JSON dataset (offline-friendly)
+
+---
+
+## 🔑 API Key Setup
+
+> You'll need an API key from Spoonacular.
+
+1. Sign up at [spoonacular.com](https://spoonacular.com/food-api)
+2. Get your free API key
+3. In your project, create a `.env` file:
+

@@ -8,6 +8,7 @@ import InnerContainer from "./Components/InnerContainer.jsx";
 
 function App() {
   const [foodData, setFoodData] = useState([]);
+  const [foodId, setFoodId] = useState(null);
 
   return (
     <div className={styles.container}>
