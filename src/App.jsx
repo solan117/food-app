@@ -3,6 +3,8 @@ import { useState } from "react";
 import FoodList from "./Components/FoodList.jsx";
 import Nav from "./Components/Nav.jsx";
 import styles from "./CSS/app.module.css";
+import Container from "./Components/Container.jsx";
+import InnerContainer from "./Components/InnerContainer.jsx";
 
 function App() {
   const [foodData, setFoodData] = useState([]);
@@ -18,7 +20,11 @@ function App() {
       </section>
 
       <section>
-        <FoodList foodData={foodData} setFoodData={setFoodData} />
+        <Container>
+          <InnerContainer>
+            <FoodList foodData={foodData} setFoodData={setFoodData} />
+          </InnerContainer>
+        </Container>
       </section>
     </div>
   );
