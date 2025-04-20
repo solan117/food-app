@@ -5,10 +5,11 @@ import Nav from "./Components/Nav.jsx";
 import styles from "./CSS/app.module.css";
 import Container from "./Components/Container.jsx";
 import InnerContainer from "./Components/InnerContainer.jsx";
+import FoodDetail from "./Components/FoodDetail.jsx";
 
 function App() {
   const [foodData, setFoodData] = useState([]);
-  const [foodId, setFoodId] = useState(null);
+  const [foodId, setFoodId] = useState("");
 
   return (
     <div className={styles.container}>
@@ -23,7 +24,14 @@ function App() {
       <section>
         <Container>
           <InnerContainer>
-            <FoodList foodData={foodData} setFoodData={setFoodData} />
+            <FoodList
+              foodData={foodData}
+              setFoodData={setFoodData}
+              setFoodId={setFoodId}
+            ></FoodList>
+          </InnerContainer>
+          <InnerContainer>
+            <FoodDetail foodId={foodId} />
           </InnerContainer>
         </Container>
       </section>
