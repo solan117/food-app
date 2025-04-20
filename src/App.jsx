@@ -9,7 +9,7 @@ import FoodDetail from "./Components/FoodDetail.jsx";
 
 function App() {
   const [foodData, setFoodData] = useState([]);
-  const [foodId, setFoodId] = useState("");
+  const [foodId, setFoodId] = useState(652542);
 
   return (
     <div className={styles.container}>

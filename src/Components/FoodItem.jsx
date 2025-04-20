@@ -33,16 +33,6 @@ export default function FoodItem({ food, setFoodId }) {
   const [recipe, setRecipe] = useState(null);
   const [showRecipe, setShowRecipe] = useState(false);
 
-  // async function fetchFoodDetails(id) {
-  //   const res = await fetch(
-  //     `https://api.spoonacular.com/recipes/${id}/information?apiKey=e3299e71a50149968f1cdbae1319d789`,
-  //   );
-  //   const data = await res.json();
-  //   console.log(data);
-  //   setRecipe(data);
-  //   setShowRecipe(true);
-  // }
-
   return (
     <div className={styles.card}>
       <img className={styles.image} src={food.image} alt={food.title} />
