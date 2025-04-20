@@ -1,5 +1,6 @@
 import styles from "../CSS/foodetail.module.css";
 import { useEffect, useState } from "react";
+import parse from "html-react-parser";
 
 export default function FoodDetail({ foodId }) {
   const [food, setFood] = useState({});
@@ -18,30 +19,52 @@ export default function FoodDetail({ foodId }) {
     fetchFoodDetails(foodId);
   }, [foodId]);
 
+  // Fallback: Convert plain instructions into numbered list
+  function renderInstructions(instructions) {
+    if (!instructions) return <p>No instructions provided.</p>;
+
+    // If it's HTML (contains <ol> or <li>), parse safely
+    if (instructions.includes("<li>") || instructions.includes("<ol>")) {
+      return parse(instructions);
+    }
+
+    // If it's plain text (e.g. multiple paragraphs or dot-separated)
+    const steps = instructions
+      .split(/\. |\n+/)
+      .map((step) => step.trim())
+      .filter((step) => step.length > 0);
+
+    return (
+      <ol className={styles.instructionsList}>
+        {steps.map((step, index) => (
+          <li key={index}>{step}</li>
+        ))}
+      </ol>
+    );
+  }
+
   return (
     <div className={styles.container}>
-      <div>
-        <span>
-          <strong>
-            Food Detail Food Id : {foodId}
-            Food Name: {food.title}
-          </strong>
-        </span>
-        <img src={food.image} alt={food.title} />
+      <div className={styles.header}>
+        <h2 className={styles.title}>{food.title}</h2>
+        <img className={styles.image} src={food.image} alt={food.title} />
       </div>
-      <span>
-        <strong>Server: {food.servings}</strong>
-      </span>
-      <span>
-        <strong>{food.readyInMinutes} Minutes</strong>
-      </span>
-      <span>{food.vegetarian ? "vegetarian" : "non-vegetarian"}</span>
-      <span>{food.vegan ? "Vegan" : ""} </span>
-      <span>{food.pricePerServing / 10} Per Serving</span>
-      <div>
-        {isLoading ? "Loading..." : ""}
-        <h2>Instructions</h2>
-        <p dangerouslySetInnerHTML={{ __html: food.instructions }}></p>
+
+      <div className={styles.details}>
+        <span>
+          🍽️ Servings: <strong>{food.servings}</strong>
+        </span>
+        <span>
+          ⏱️ Time: <strong>{food.readyInMinutes} mins</strong>
+        </span>
+        <span>{food.vegetarian ? "🌱 Vegetarian" : "🍖 Non-Vegetarian"}</span>
+        {food.vegan && <span>🥦 Vegan</span>}
+        <span>💲 {food.pricePerServing / 10} Per Serving</span>
+      </div>
+
+      <div className={styles.instructions}>
+        <h3>📝 Instructions</h3>
+        {isLoading ? <p>Loading...</p> : renderInstructions(food.instructions)}
       </div>
     </div>
   );
