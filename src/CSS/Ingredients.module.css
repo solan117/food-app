@@ -1,0 +1,30 @@
+.ingredients {
+    text-align: left;
+}
+
+.ingredientGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.ingredientItem {
+    background-color: #fff8f2;
+    border-radius: 12px;
+    padding: 0.8rem;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.ingredientImage {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 0.5rem;
+}
+
+.ingredientName {
+    font-weight: 500;
+    font-size: 1rem;
+}

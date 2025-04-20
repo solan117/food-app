@@ -1,6 +1,7 @@
 import styles from "../CSS/foodetail.module.css";
 import { useEffect, useState } from "react";
 import parse from "html-react-parser";
+import Ingredients from "./Ingredients.jsx";
 
 export default function FoodDetail({ foodId }) {
   const [food, setFood] = useState({});
@@ -61,7 +62,7 @@ export default function FoodDetail({ foodId }) {
         {food.vegan && <span>🥦 Vegan</span>}
         <span>💲 {food.pricePerServing / 10} Per Serving</span>
       </div>
-
+      <Ingredients food={food} />
       <div className={styles.instructions}>
         <h3>📝 Instructions</h3>
         {isLoading ? <p>Loading...</p> : renderInstructions(food.instructions)}
