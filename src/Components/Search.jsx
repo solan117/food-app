@@ -1,17 +1,19 @@
 import { useEffect, useState } from "react";
 import styles from "../CSS/search.module.css";
+import { API_CONFIG } from "../config.js";
 
-const URL = "https://api.spoonacular.com/recipes/complexSearch";
-const API_KEY = "e3299e71a50149968f1cdbae1319d789"; //"cf1a95fb73de4c1db8bc69826c4c8735";
+const apiKey = API_CONFIG.API_KEY;
+const URL = API_CONFIG.BASE_URL;
 
-export default function Search({ foodData, setFoodData }) {
+export default function Search({ setFoodData }) {
   const [query, setQuery] = useState("Paneer");
 
   useEffect(() => {
     async function fetchFood() {
-      const res = await fetch(`${URL}?query=${query}&apiKey=${API_KEY}`);
+      const res = await fetch(
+        `${URL}/complexSearch?query=${query}&apiKey=${apiKey}`,
+      );
       const data = await res.json();
-      console.log(data.results);
       setFoodData(data.results);
     }
     fetchFood();

@@ -2,16 +2,17 @@ import styles from "../CSS/foodetail.module.css";
 import { useEffect, useState } from "react";
 import parse from "html-react-parser";
 import Ingredients from "./Ingredients.jsx";
+import { API_CONFIG } from "../config.js";
 
 export default function FoodDetail({ foodId }) {
   const [food, setFood] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const apiKey = API_CONFIG.API_KEY;
+  const url = API_CONFIG.BASE_URL;
 
   useEffect(() => {
     async function fetchFoodDetails(foodId) {
-      const res = await fetch(
-        `https://api.spoonacular.com/recipes/${foodId}/information?apiKey=e3299e71a50149968f1cdbae1319d789`,
-      );
+      const res = await fetch(`${url}/${foodId}/information?apiKey=${apiKey}`);
       const data = await res.json();
       console.log(data);
       setFood(data);
@@ -60,7 +61,7 @@ export default function FoodDetail({ foodId }) {
         </span>
         <span>{food.vegetarian ? "🌱 Vegetarian" : "🍖 Non-Vegetarian"}</span>
         {food.vegan && <span>🥦 Vegan</span>}
-        <span>💲 {food.pricePerServing / 10} Per Serving</span>
+        <span>💲 {(food.pricePerServing / 10).toFixed(2)} Per Serving</span>
       </div>
       <Ingredients food={food} />
       <div className={styles.instructions}>
